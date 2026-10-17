@@ -6,6 +6,44 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
+const projects = [
+  {
+    name: "Threat Detection System",
+    category: "Cybersecurity / AI",
+    tools: "Python, Ollama, URLscan API, Google Safe Browsing",
+    image: "/images/threat-detection.jpg",
+    link: "https://github.com/Shikhar-codegod",
+  },
+  {
+    name: "Smart_Sakha.AI",
+    category: "Generative AI / Cloud",
+    tools: "Python, Flask, Azure, LLMs",
+    image: "/images/smart-sakha.jpg",
+    link: "https://smart-sakha-ai-sg.azurewebsites.net",
+  },
+  {
+    name: "Face Tracker",
+    category: "Computer Vision",
+    tools: "Python, OpenCV",
+    image: "/images/face-tracker.jpg",
+    link: "https://github.com/Shikhar-codegod",
+  },
+  {
+    name: "YouTube Shorts Bot",
+    category: "Browser Automation",
+    tools: "Python, Selenium",
+    image: "/images/shorts-bot.jpg",
+    link: "https://github.com/Shikhar-codegod",
+  },
+  {
+    name: "JARVIS – Voice Assistant",
+    category: "Desktop AI / Python",
+    tools: "Python, SpeechRecognition, Pyttsx3",
+    image: "/images/jarvis-assistant.jpg",
+    link: "https://github.com/Shikhar-codegod",
+  },
+];
+
 const Work = () => {
   useGSAP(() => {
   let translateX: number = 0;
@@ -28,7 +66,7 @@ const Work = () => {
     scrollTrigger: {
       trigger: ".work-section",
       start: "top top",
-      end: `+=${translateX}`, // Use actual scroll width
+      end: `+=${translateX}`,
       scrub: true,
       pin: true,
       id: "work",
@@ -40,7 +78,6 @@ const Work = () => {
     ease: "none",
   });
 
-  // Clean up (optional, good practice)
   return () => {
     timeline.kill();
     ScrollTrigger.getById("work")?.kill();
@@ -53,21 +90,30 @@ const Work = () => {
           My <span>Work</span>
         </h2>
         <div className="work-flex">
-          {[...Array(6)].map((_value, index) => (
+          {projects.map((project, index) => (
             <div className="work-box" key={index}>
               <div className="work-info">
                 <div className="work-title">
                   <h3>0{index + 1}</h3>
-
                   <div>
-                    <h4>Project Name</h4>
-                    <p>Category</p>
+                    <h4>{project.name}</h4>
+                    <p>{project.category}</p>
                   </div>
                 </div>
                 <h4>Tools and features</h4>
-                <p>Javascript, TypeScript, React, Threejs</p>
+                <p>{project.tools}</p>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="work-link"
+                  >
+                    View Project ↗
+                  </a>
+                )}
               </div>
-              <WorkImage image="/images/placeholder.webp" alt="" />
+              <WorkImage image={project.image} alt={project.name} />
             </div>
           ))}
         </div>

@@ -85,6 +85,26 @@
 .work-info > p {
   width: 90%;
 }
+.work-info > a.work-link {
+  display: inline-block;
+  position: static;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  opacity: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accentColor);
+  margin-top: 12px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s;
+}
+.work-info > a.work-link:hover {
+  opacity: 0.7;
+}
 .work-image {
   display: flex;
   width: 100%;
